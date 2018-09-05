@@ -1,0 +1,7 @@
+.btnLevel.disabled{
+    border: 1px solid black;
+}
+
+.btnLevel.active{
+    font-size: -webkit-xxx-large;
+}

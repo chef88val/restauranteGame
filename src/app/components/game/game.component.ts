@@ -2,8 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Game } from '../../class/game';
 import { Level } from '../../class/level';
 import { Player } from '../../class/player';
-import { ApiDataService } from '../../api-data.service';
+import { ApiDataService } from '../../services/api-data.service';
 import { CookieService } from 'ngx-cookie';
+import { ColorLevel } from '../../class/color';
 
 @Component({
   selector: 'app-game',
@@ -17,10 +18,12 @@ export class GameComponent implements OnInit {
   private gameStatus: Boolean = true;
   private levelLoaded: Boolean = false;
   public levels: Level[] = [];
+  public color: ColorLevel;
 
   constructor(private _apiData: ApiDataService, private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.color = new ColorLevel(this._apiData.getNLevels());
     this.levels = this._apiData.getLevels();
     this.game = new Game(this.player, new Level(60, 0, 1, null, null, null, null), false);
     // this.player = new Player('JS', null, null, '');
@@ -34,6 +37,10 @@ export class GameComponent implements OnInit {
     }
 
   }
+  getColor(n: Number): String {
+    // console.log(n+'-'+this.color.getColor(n));
+    return this.color.getColor(n);
+  }
 
   newGame() {
 
@@ -44,20 +51,20 @@ export class GameComponent implements OnInit {
   }
   onPlayerChange(evt: any) {
     console.log('onPlayerChange' + evt);
-    if ( evt === 'resetLevel') {
+    if (evt === 'resetLevel') {
       this.levelLoaded = false;
       this.level = 0;
       this.player.currentLvl = this.level;
-    this.cookieService.putObject('player', this.player);
+      this.cookieService.putObject('player', this.player);
     }
   }
   onLevelChange(evt: any) {
     console.log('onLevelChange' + evt);
-    if ( evt === 'Completed') {
+    if (evt === 'Completed') {
       this.levelLoaded = false;
       this.level = Number(this.level) + Number(1);
       this.player.currentLvl = this.level;
-    this.cookieService.putObject('player', this.player);
+      this.cookieService.putObject('player', this.player);
     }
 
   }

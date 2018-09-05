@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Level } from '../../class/level';
-import { ApiDataService } from '../../api-data.service';
+import { ApiDataService } from '../../services/api-data.service';
 import { Waiter, LoadItemWaiter } from '../../class/waiter';
 
 @Component({
@@ -67,12 +67,12 @@ export class BoardComponent implements OnInit, OnChanges {
 
   sendBill(table: String) {
     this.levelSelected.tables.find(t => t.name === table).changeStatus('billSended');
-
-
+    this.waiter[this.waiterSelected].setDataAux('bills');
   }
   closeTable(table: String) {
     this.levelSelected.tables.find(t => t.name === table).changeStatus('closed');
     this.sendLevelMain.emit('Completed');
+    this.waiter[this.waiterSelected].setDataAux('nTables');
     // this.sendPlayerMain.emit('Completed');
   }
 

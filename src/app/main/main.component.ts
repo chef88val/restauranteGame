@@ -3,7 +3,7 @@ import { Player } from '../class/player';
 import { Game } from '../class/game';
 import { Level } from '../class/level';
 import { CookieService } from 'ngx-cookie';
-import { ApiDataService } from '../api-data.service';
+import { ApiDataService } from '../services/api-data.service';
 
 @Component({
   selector: 'app-main',
