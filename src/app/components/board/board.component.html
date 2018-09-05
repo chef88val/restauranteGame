@@ -1,40 +1,44 @@
- 
-<button *ngFor="let waiter of levelSelected.waiter; let i=index" type="button" [disabled]="levelSelected.waiter.length>0" (click)="selectWaiter(i)">{{waiter.name}}</button>
+<button *ngFor="let waiter of levelSelected.waiter; let i=index" type="button" [disabled]="levelSelected.waiter.length>0"
+  (click)="selectWaiter(i)">{{waiter.name}}</button>
+  <pre> {{waiter[waiterSelected].loadDrinkItems.length==0 }}{{ levelSelected.drinks.length>0 }}{{!isBill  }} </pre>
 <!--<div *ngFor="let level of levelSelected">-->
-<table>
-  <tr>
-    <th>Table</th>
-    <th>Drinks Left</th>
-    <th>Food Left</th>
-    <th>Drinks Served</th>
-    <th>Food Served</th>
-    <th>Actions</th>
-  </tr>
-  <tr *ngFor="let table of levelSelected.tables">
-    <td>{{table | json}} </td>
-    <!--<td>{{ levelSelected | json}}</td>-->
-    <td>{{levelSelected.drinks.length}}</td>
-    <td>{{levelSelected.foods.length}}</td>
-    <td>{{waiter[waiterSelected].loadDrinkItems.length }}</td>
-    <td>{{waiter[waiterSelected].loadFoodItems.length}}</td>
-    <td *ngIf="table.status!=='closed'">
-      <button *ngIf="waiter[waiterSelected].loadDrinkItems.length==0 && levelSelected.drinks.length>0 && !isBill  " type="button"
-        (click)="loadItem(1,'drink', table.name)" class="btn btn-2x btn-primary">Load
-        drink</button>
-      <button *ngIf="waiter[waiterSelected].loadFoodItems.length==0 && levelSelected.foods.length>0 && !isBill" type="button" (click)="loadItem(1,'food', table.name)"
-        class="btn btn-2x btn-success">Load
-        food</button>
-      <button *ngIf="waiter[waiterSelected].loadDrinkItems.length>0 && !isBill" type="button" (click)="serveItem(1,'drink', table.name)"
-        class="btn btn-2x btn-primary">Serve
-        drink</button>
-      <button *ngIf="waiter[waiterSelected].loadFoodItems.length>0 && !isBill" type="button" (click)="serveItem(1,'food', table.name)"
-        class="btn btn-2x btn-success">Serve
-        food</button>
-      <button *ngIf=" table.status ==='served'" type="button" (click)="sendBill(table.name)" class="btn btn-2x btn-warning">Bill</button>
-    <button *ngIf=" table.status ==='billSended'" type="button" (click)="closeTable(table.name)" class="btn btn-2x btn-danger">Close</button>
-    </td>
-  </tr>
-
+<table class="table table-responsive table-striped">
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Drinks Left</th>
+      <th>Food Left</th>
+      <th>Drinks Served</th>
+      <th>Food Served</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let table of levelSelected.tables">
+      <td>{{table.name}} </td>
+      <!--<td>{{ levelSelected | json}}</td>-->
+      <td>{{levelSelected.drinks.length}}</td>
+      <td>{{levelSelected.foods.length}}</td>
+      <td>{{waiter[waiterSelected].loadDrinkItems.length }}</td>
+      <td>{{waiter[waiterSelected].loadFoodItems.length}}</td>
+      <td *ngIf="table.status!=='closed'">
+        <button *ngIf="waiter[waiterSelected].loadDrinkItems.length==0 && levelSelected.drinks.length>0 && !isBill  "
+          type="button" (click)="loadItem(1,'drink', table.name)" [ngClass]="{'disabled': isFreeSpace}" class="btn btn-2x btn-primary">Load
+          drink</button>
+        <button *ngIf="waiter[waiterSelected].loadFoodItems.length==0 && levelSelected.foods.length>0 && !isBill" type="button"
+          (click)="loadItem(1,'food', table.name)" class="btn btn-2x btn-success" [ngClass]="{'disabled': isFreeSpace}">Load
+          food</button>
+        <button *ngIf="waiter[waiterSelected].loadDrinkItems.length>0 && !isBill" type="button"   (click)="serveItem(1,'drink', table.name)"
+          class="btn btn-2x btn-primary">Serve
+          drink</button>
+        <button *ngIf="waiter[waiterSelected].loadFoodItems.length>0 && !isBill" type="button" (click)="serveItem(1,'food', table.name)"
+          class="btn btn-2x btn-success">Serve
+          food</button>
+        <button *ngIf=" table.status ==='served'" type="button" (click)="sendBill(table.name)" class="btn btn-2x btn-warning">Bill</button>
+        <button *ngIf=" table.status ==='billSended'" type="button" (click)="closeTable(table.name)" class="btn btn-2x btn-danger">Close</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <pre>{{levelSelected | json}}</pre>

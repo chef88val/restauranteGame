@@ -17,6 +17,7 @@ export class BoardComponent implements OnInit, OnChanges {
   private waiterSelected: any = 0;
   private isBill: Boolean = false;
   private isBillSend: Boolean = false;
+  private isFreeSpace: Boolean = false;
   constructor(private apiData: ApiDataService) { }
 
   ngOnInit() {
@@ -38,11 +39,20 @@ export class BoardComponent implements OnInit, OnChanges {
 
     this.waiter[this.waiterSelected].serveItem(type);
     this.checkIsBill(table);
+    this.checktIsFreeSpace();
   }
-
+  checktIsFreeSpace(): Boolean {
+    if (this.waiter[this.waiterSelected].isFreeSpace(this.waiter[this.waiterSelected])) {
+      this.isFreeSpace = false;
+      return true;
+    } else {
+      this.isFreeSpace = true;
+      return false;
+    }
+  }
   loadItem(waiter: Number, type: String, table: String) {
     let first: any = null;
-    if (this.waiter[this.waiterSelected].isFreeSpace(this.waiter[this.waiterSelected])) {
+    if (this.checktIsFreeSpace()) {
       if (type === 'drink' && this.levelSelected.drinks.length > 0) {
         first = this.levelSelected.drinks[0];
         this.levelSelected.drinks.shift();
@@ -55,6 +65,7 @@ export class BoardComponent implements OnInit, OnChanges {
       }
     }
     console.log(this.levelSelected.drinks.length);
+    this.checktIsFreeSpace();
   }
 
   checkIsBill(table: String) {

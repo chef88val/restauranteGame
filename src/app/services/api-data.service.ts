@@ -66,7 +66,7 @@ export class ApiDataService {
             this.generateItem('Food', 1, {}),
             // [new Food(`F${i * 0 + 1}`, 1, 1)],
             this.generateItem('Drink', 1, {}),
-            this.generateItem('Waiter', 1, { hands: 1, quantItems: 2 }),
+            this.generateItem('Waiter', 1, { hands: 1, quantItems: 1 }),
             this.generateItem('Table', 1, { pax: 3 }),
           ));
       }
