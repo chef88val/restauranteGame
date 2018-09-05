@@ -1,0 +1,11 @@
+<!--<input name="playerName" type="text" placeholder="Name of the player" [(ngModel)]="player.name" />-->
+<!--lev.lvl<level ||-->
+<app-player  [player]="player" (sendPlayerMain)="onPlayerChange($event)" ></app-player>
+<!--<pre>p:{{player | json}}</pre>-->
+<!--<span>{{ levelLoaded && player.status!=null}} </span>-->
+<button *ngIf="player.status!=null && !gameStatus" type="button" (click)="newGame()"> New Game</button>
+<div *ngIf="player.status!=null && gameStatus && levels.length>0">
+  <button *ngFor="let lev of levels" (click)="loadLevel(lev.lvl)"  [disabled]="levelLoaded || ( lev.lvl>level)">{{lev.lvl}}</button>
+</div>
+<p>level {{level}} </p>
+<app-board  *ngIf="levelLoaded && player.status!=null" [level]="level" (sendLevelMain)="onLevelChange($event)"></app-board>

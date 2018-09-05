@@ -1,0 +1,23 @@
+<div  *ngIf="player.status==null"> <input name="playerName" type="text" placeholder="Name of the player" [(ngModel)]="player.name" />
+<button (click)="savePlayer($event)">Create user</button></div>
+<div *ngIf="player.status!=null">
+  <pre>Player:{{player |json}}</pre>
+  <button (click)="removeCookies()">Remove cookies</button>
+  <button (click)="resetLevel()">Reset level</button>
+</div>
+<!--<div id="main" style="border: 1px solid black">
+  Player:
+  <p>
+    <label>Name</label><span>{{player.name}}</span>
+  </p>
+  <p>
+    <label>Current level: </label><span>{{player.currentLvl.lvl}}</span>
+  </p>
+  <p>
+    <label>Banned: </label><span>{{player.banned}}</span>
+  </p>
+  <p>
+    <label>Status: </label><span>{{player.status}}</span>
+  </p>
+
+</div>-->
