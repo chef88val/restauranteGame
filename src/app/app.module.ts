@@ -18,6 +18,7 @@ import { MainComponent } from './main/main.component';
 import { BoardComponent } from './components/board/board.component';
 import { ColorComponent } from './components/color/color.component';
 import { ResumComponent } from './components/resum/resum.component';
+import { AlertComponent } from './components/alert/alert.component';
 import { RouterOutlet } from '@angular/router';
 import { ApiDataService } from './services/api-data.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +36,8 @@ import { AppRoutingModule } from './app-routing.module';
     MainComponent,
     BoardComponent,
     ColorComponent,
-    ResumComponent
+    ResumComponent,
+    AlertComponent
   ],
   imports: [
     AppRoutingModule,
