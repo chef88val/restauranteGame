@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
@@ -21,7 +22,8 @@ import { ResumComponent } from './components/resum/resum.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RouterOutlet } from '@angular/router';
 import { ApiDataService } from './services/api-data.service';
-import { AppRoutingModule } from './app-routing.module';// Import the library
+import { AppRoutingModule } from './app-routing.module';
+// Import the library
 import { CounterModule } from 'ngx-counter';
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { CounterModule } from 'ngx-counter';
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule,
+    BrowserModule, BrowserAnimationsModule,
     CookieModule.forRoot(),
     FormsModule, ReactiveFormsModule,
     NgbModule.forRoot(),

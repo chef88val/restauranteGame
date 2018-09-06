@@ -65,6 +65,10 @@ export class GameComponent implements OnInit {
       this.level = Number(this.level) + Number(1);
       this.player.currentLvl = this.level;
       this.cookieService.putObject('player', this.player);
+    } else if (evt === 'endGame') {
+      this.levelLoaded = false;
+      this.level = Number(this.level) ;
+      this.player.currentLvl = this.level;
     }
 
   }

@@ -3,26 +3,17 @@
 <div class="row col-lg-12">
   <div class="col-lg-6">
     <app-player [player]="player" (sendPlayerMain)="onPlayerChange($event)"></app-player>
-    <pre>p:{{color | json}}</pre>
+    <!--<pre>p:{{color | json}}</pre>-->
     <!--<span>{{ levelLoaded && player.status!=null}} </span>-->
     <button *ngIf="player.status!=null && !gameStatus" type="button" (click)="newGame()"> New Game</button>
     <div *ngIf="player.status!=null && gameStatus && levels.length>0">
-      <button *ngFor="let lev of levels;let i = index" (click)="loadLevel(lev.lvl)" class="btn btnLevel" style="color:white" [ngStyle]="{'background-color': getColor(i)}"
-        [disabled]="levelLoaded || ( lev.lvl>level)" [ngClass]="{'disabled': levelLoaded || (   lev.lvl>level),'active':  lev.lvl===level}">{{lev.lvl}}</button>
+      <button *ngFor="let lev of levels;let i = index" (click)="loadLevel(lev.lvl)" class="btn btnLevel" style="color:white"
+        [ngStyle]="{'background-color': getColor(i)}" [disabled]="levelLoaded || ( lev.lvl>level)" [ngClass]="{'disabled': levelLoaded || (   lev.lvl>level),'active':  lev.lvl===level}">{{lev.lvl}}</button>
     </div>
     <p>level {{level}} </p>
     <app-board *ngIf="levelLoaded && player.status!=null" [level]="level" (sendLevelMain)="onLevelChange($event)"></app-board>
   </div>
   <div class="col-lg-6">
-      <div class="container">
-          <h2>Horizontal form with static control</h2>
-          <form class="form-horizontal" action="/action_page.php">
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="email">Email:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static">someone@example.com</p>
-              </div>
-            </div></form></div>
     <app-resum [level]="level" [player]="player"></app-resum>
   </div>
 </div>

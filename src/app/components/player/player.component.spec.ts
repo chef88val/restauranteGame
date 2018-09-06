@@ -81,7 +81,7 @@ describe('PlayerComponent', () => {
   it('removeCookies', inject([CookieService], (cookie: CookieService) => {
     component.removeCookies();
     expect(cookie.getObject('player')).toBeUndefined();
-    let emit: String = '';
+    const emit: String = '';
     component.sendPlayerMain.subscribe((value) => {
     this.emit = value; console.log('value' + value);
       expect(emit).toBe('removeCookies');

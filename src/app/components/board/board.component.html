@@ -1,5 +1,4 @@
-
-<countdown [config]="configCountDown" >$!m!:$!s!</countdown>
+<countdown [config]="configCountDown" (finished)="onFinished()" (notify)="onNotify($event)">$!m!:$!s!</countdown>
 <!--#cd1<button (click)="cd1.pause()" class="btn btn-link btn-sm">pause</button>
 <button (click)="cd1.resume()" class="btn btn-link btn-sm">resume</button>
 <button (click)="cd1.stop()" class="btn btn-link btn-sm">stop</button>
@@ -39,7 +38,7 @@
         <button *ngIf="waiter[waiterSelected].loadFoodItems.length==0 && levelSelected.foods.length>0 && !isBill" type="button"
           (click)="loadItem(1,'food', table.name)" class="btn btn-2x btn-success" [ngClass]="{'disabled': isFreeSpace}">Load
           food</button>
-        <button *ngIf="waiter[waiterSelected].loadDrinkItems.length>0 && !isBill" type="button"   (click)="serveItem(1,'drink', table.name)"
+        <button *ngIf="waiter[waiterSelected].loadDrinkItems.length>0 && !isBill" type="button" (click)="serveItem(1,'drink', table.name)"
           class="btn btn-2x btn-primary">Serve
           drink</button>
         <button *ngIf="waiter[waiterSelected].loadFoodItems.length>0 && !isBill" type="button" (click)="serveItem(1,'food', table.name)"

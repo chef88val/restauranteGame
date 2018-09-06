@@ -3,6 +3,9 @@ import { Level } from '../../class/level';
 import { ApiDataService } from '../../services/api-data.service';
 import { Waiter, LoadItemWaiter } from '../../class/waiter';
 import { CountdownComponent } from 'ngx-countdown';
+import { T } from '@angular/core/src/render3';
+import { AlertsService } from '../../services/alerts.service';
+import { Alert, AlertType } from '../../class/alert';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -18,14 +21,15 @@ export class BoardComponent implements OnInit, OnChanges {
   private isBill: Boolean = false;
   private isBillSend: Boolean = false;
   private isFreeSpace: Boolean = false;
-  public configCountDown: any ={};
-  constructor(private apiData: ApiDataService) { }
-  changeLeftime() { 
-    this.configCountDown = {leftTime: this.configCountDown.leftTime-200};
-    console.log(this.configCountDown); 
-   }
+  public configCountDown: any = {};
+  constructor(private apiData: ApiDataService, private alertService: AlertsService) { }
+  changeLeftime() {
+    this.configCountDown = { leftTime: this.configCountDown.leftTime - 200 };
+    console.log(this.configCountDown);
+  }
   ngOnInit() {
-    this.configCountDown = { leftTime: 3000 };
+    // this.alertService.info('INIT');
+    this.configCountDown = { leftTime: 3 };
     // this.sendLevelMain.emit('Completed');
     // this.sendPlayerMain.emit('Completed');
     console.log('levelInput', this.apiData.getLevel(this.level));
@@ -51,6 +55,7 @@ export class BoardComponent implements OnInit, OnChanges {
       this.isFreeSpace = false;
       return true;
     } else {
+      this.alertService.warn('Waiter has not more space');
       this.isFreeSpace = true;
       return false;
     }
@@ -84,15 +89,28 @@ export class BoardComponent implements OnInit, OnChanges {
   sendBill(table: String) {
     this.levelSelected.tables.find(t => t.name === table).changeStatus('billSended');
     this.waiter[this.waiterSelected].setDataAux('bills');
+    this.alertService.success('Waiter has been <b>send</b> the bill');
+
   }
   closeTable(table: String) {
     this.levelSelected.tables.find(t => t.name === table).changeStatus('closed');
     this.sendLevelMain.emit('Completed');
     this.waiter[this.waiterSelected].setDataAux('nTables');
+    this.alertService.success('Waiter has been <b>close</b> the bill');
+
     // this.sendPlayerMain.emit('Completed');
   }
 
   selectWaiter(i: Number) {
     this.waiterSelected = i;
+  }
+
+  onFinished() {
+    console.log('finished');
+    this.alertService.alert(new Alert({ message: 'End game', type: AlertType.Error }));
+    this.sendLevelMain.emit('endGame');
+  }
+  onNotify(evt: EventEmitter<any>) {
+    console.log(evt);
   }
 }
