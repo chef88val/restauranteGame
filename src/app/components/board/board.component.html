@@ -1,3 +1,15 @@
+
+<countdown [config]="configCountDown" >$!m!:$!s!</countdown>
+<!--#cd1<button (click)="cd1.pause()" class="btn btn-link btn-sm">pause</button>
+<button (click)="cd1.resume()" class="btn btn-link btn-sm">resume</button>
+<button (click)="cd1.stop()" class="btn btn-link btn-sm">stop</button>
+<button (click)="cd1.restart()" class="btn btn-link btn-sm">restart</button>
+<button (click)="changeLeftime()" class="btn btn-link btn-sm">less</button>-->
+<ngx-counter [(ngModel)]="counterStart" [limit]=100000 size="small" theme="red"></ngx-counter>
+<!--<ngx-counter [countValue]=1 [limit]=10 font="cursive" theme="green"></ngx-counter>
+<ngx-counter [countValue]=0 [speed]=1000 size="big" (change)="counterChanged($event)"></ngx-counter>
+<ngx-counter [countValue]=-1 [limit]=counterFinish size="large" font="Arial" theme="gray"></ngx-counter>
+<ngx-counter countValue=-2 limit=10 size="xl" color="gold" bgcolor="#F5F5DC"></ngx-counter>-->
 <button *ngFor="let waiter of levelSelected.waiter; let i=index" type="button" [disabled]="levelSelected.waiter.length>0"
   (click)="selectWaiter(i)">{{waiter.name}}</button>
 <!--<div *ngFor="let level of levelSelected">-->

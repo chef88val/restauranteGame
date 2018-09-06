@@ -14,10 +14,14 @@ import { WaiterComponent } from './components/waiter/waiter.component';
 import { FormsModule } from '@angular/forms';
 import { ApiDataService } from './services/api-data.service';
 import { CookieService, CookieOptionsProvider, CookieModule } from 'ngx-cookie';
+import { AlertComponent } from './components/alert/alert.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CountdownModule, CountdownComponent } from 'ngx-countdown';
+import { CounterModule, CounterComponent } from 'ngx-counter';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule , CookieModule.forRoot()],
+      imports: [ FormsModule , CountdownModule, CounterModule, CookieModule.forRoot(), RouterTestingModule],
       providers: [ ApiDataService, CookieService, CookieOptionsProvider],
       declarations: [
         AppComponent,
@@ -31,7 +35,8 @@ describe('AppComponent', () => {
         LevelComponent,
         ResumComponent,
         TableComponent,
-        WaiterComponent
+        WaiterComponent,
+        AlertComponent
       ],
     }).compileComponents();
   }));
@@ -45,10 +50,16 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Debug');
   }));
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
+
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Debug');
+  });
+  it('Async should render title in a h1 tag', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toEqual('');
   }));
 });

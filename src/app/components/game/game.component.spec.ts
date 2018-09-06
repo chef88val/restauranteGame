@@ -13,14 +13,17 @@ import { WaiterComponent } from '../waiter/waiter.component';
 import { FormsModule } from '@angular/forms';
 import { ApiDataService } from '../../services/api-data.service';
 import { CookieService, CookieOptionsProvider, CookieModule } from 'ngx-cookie';
-
+import { AlertComponent } from '../alert/alert.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CountdownModule } from 'ngx-countdown';
+import { CounterModule } from 'ngx-counter';
 describe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule , CookieModule.forRoot()],
+      imports: [ FormsModule , CountdownModule, CounterModule, CookieModule.forRoot(), RouterTestingModule],
       providers: [ ApiDataService, CookieService, CookieOptionsProvider],
       declarations: [GameComponent,
         PlayerComponent,
@@ -31,7 +34,8 @@ describe('GameComponent', () => {
         LevelComponent,
         ResumComponent,
         TableComponent,
-        WaiterComponent]
+        WaiterComponent,
+        AlertComponent]
     })
       .compileComponents();
   }));
