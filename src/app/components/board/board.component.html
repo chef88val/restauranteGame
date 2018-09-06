@@ -1,6 +1,5 @@
 <button *ngFor="let waiter of levelSelected.waiter; let i=index" type="button" [disabled]="levelSelected.waiter.length>0"
   (click)="selectWaiter(i)">{{waiter.name}}</button>
-  <pre> {{waiter[waiterSelected].loadDrinkItems.length==0 }}{{ levelSelected.drinks.length>0 }}{{!isBill  }} </pre>
 <!--<div *ngFor="let level of levelSelected">-->
 <table class="table table-responsive table-striped">
   <thead>

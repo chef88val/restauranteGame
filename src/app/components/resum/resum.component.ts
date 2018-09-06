@@ -11,7 +11,7 @@ import { ApiDataService } from '../../services/api-data.service';
 export class ResumComponent implements OnInit {
   @Input() public level: Number;
   @Input() public player: Player;
-  private levelSelected: Level[];
+  public levelSelected: Level[];
   constructor(private apiData: ApiDataService) { }
 
   ngOnInit() {

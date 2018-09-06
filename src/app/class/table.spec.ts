@@ -1,34 +1,10 @@
-import { Waiter } from './waiter';
-import { Drink } from './drink';
-import { Food } from './food';
-import { Injectable } from '@angular/core';
-@Injectable()
+import { Table } from './table';
 
-export class Table {
-    public name: String;
-    private pax: Number;
-    private waiter: Waiter;
-    private drinks: Drink[];
-    private foods: Food[];
-    private status: String;
-    constructor(_name: String, _pax: Number, _waiter?: Waiter, _drinks?: Drink[], _foods?: Food[], _status?: String) {
-        this.name = _name;
-        this.pax = _pax;
-        this.waiter = _waiter;
-        this.drinks = _drinks;
-        this.foods = _foods;
-        this.status = 'draft';
-    }
+describe('MasterService without Angular testing support', () => {
+    let tableClass: Table;
 
-    setItem(type: String, obj: any) {
-        if (type === 'drink') {
-            this.drinks.push(obj);
-        } else if (type === 'food') {
-            this.foods.push(obj);
-        }
-    }
-
-    changeStatus(newStatus: String) {
-        this.status = newStatus;
-    }
-}
+    it('#getValue should return real value from the real service', () => {
+        tableClass = new Table('test', 1);
+        expect(tableClass.pax).toBe(1);
+    });
+});

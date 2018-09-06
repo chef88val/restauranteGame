@@ -17,14 +17,14 @@ export class GameComponent implements OnInit {
   private game: Game;
   private gameStatus: Boolean = true;
   private levelLoaded: Boolean = false;
-  public levels: Level[] = [];
+  public levels: Level[];
   public color: ColorLevel;
 
   constructor(private _apiData: ApiDataService, private cookieService: CookieService) { }
 
   ngOnInit() {
     this.color = new ColorLevel(this._apiData.getNLevels());
-    this.levels = this._apiData.getLevels();
+    this.levels = this._apiData.getLevels() || [];
     this.game = new Game(this.player, new Level(60, 0, 1, null, null, null, null), false);
     // this.player = new Player('JS', null, null, '');
     if (!this.cookieService.get('player')) {

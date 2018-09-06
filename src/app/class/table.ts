@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class Table {
     public name: String;
-    private pax: Number;
+    public pax: Number;
     private waiter: Waiter;
     private drinks: Drink[];
     private foods: Food[];

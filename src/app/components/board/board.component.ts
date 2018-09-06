@@ -12,8 +12,8 @@ export class BoardComponent implements OnInit, OnChanges {
   @Input() level: Number;
   @Output() sendLevelMain: EventEmitter<any> = new EventEmitter();
   // @Output() sendPlayerMain: EventEmitter<any> = new EventEmitter();
-  private levelSelected: Level;
-  private waiter: Waiter[];
+  private levelSelected: Level = null;
+  private waiter: Waiter[] = [];
   private waiterSelected: any = 0;
   private isBill: Boolean = false;
   private isBillSend: Boolean = false;

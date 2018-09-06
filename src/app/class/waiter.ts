@@ -40,8 +40,8 @@ export class Waiter {
         this.name = _name;
         this.hands = _hands;
         this.quantItems = _quantItems;
-        this.loadFoodItems = _loadFoodItems;
-        this.loadDrinkItems = _loadDrinkItems;
+        this.loadFoodItems = _loadFoodItems || [];
+        this.loadDrinkItems = _loadDrinkItems || [];
         this.auxData = new WaiterAux();
     }
 

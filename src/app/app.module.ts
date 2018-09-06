@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
@@ -20,7 +20,7 @@ import { ColorComponent } from './components/color/color.component';
 import { ResumComponent } from './components/resum/resum.component';
 import { RouterOutlet } from '@angular/router';
 import { ApiDataService } from './services/api-data.service';
-import { AlertsService } from './services/alerts.service';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,15 +38,16 @@ import { AlertsService } from './services/alerts.service';
     ResumComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     CookieModule.forRoot(),
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     NgbModule.forRoot(),
     NgxPermissionsModule.forRoot(),
     TranslateModule.forRoot(),
     CountdownModule
   ],
-  providers: [RouterOutlet, ApiDataService, AlertsService],
+  providers: [RouterOutlet, ApiDataService], // , AlertsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
