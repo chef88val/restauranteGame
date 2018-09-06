@@ -14,7 +14,8 @@ import { ApiDataService } from '../../services/api-data.service';
 import { CookieService, CookieOptionsProvider, CookieModule } from 'ngx-cookie';
 import { AlertComponent } from '../alert/alert.component';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { CountdownModule } from 'ngx-countdown';
+import { CounterModule } from 'ngx-counter';
 describe('BoardComponent', () => {
   let component: BoardComponent;
   let fixture: ComponentFixture<BoardComponent>;
@@ -22,7 +23,7 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule , CookieModule.forRoot(), RouterTestingModule],
+      imports: [ FormsModule ,  CountdownModule, CounterModule,CookieModule.forRoot(), RouterTestingModule],
       providers: [ ApiDataService, CookieService, CookieOptionsProvider],
       declarations: [ PlayerComponent,
         BoardComponent,

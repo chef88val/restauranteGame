@@ -17,14 +17,15 @@ import { CookieService, CookieOptionsProvider, CookieModule } from 'ngx-cookie';
 import { AlertComponent } from '../components/alert/alert.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { CountdownModule } from 'ngx-countdown';
+import { CounterModule } from 'ngx-counter';
 describe('MainComponent', () => {
   let component: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule , CookieModule.forRoot(), RouterTestingModule],
+      imports: [ FormsModule , CountdownModule, CounterModule, CookieModule.forRoot(), RouterTestingModule],
       providers: [ ApiDataService, CookieService, CookieOptionsProvider],
       declarations: [ MainComponent, GameComponent,
         PlayerComponent,

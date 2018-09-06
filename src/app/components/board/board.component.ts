@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 import { Level } from '../../class/level';
 import { ApiDataService } from '../../services/api-data.service';
 import { Waiter, LoadItemWaiter } from '../../class/waiter';
-
+import { CountdownComponent } from 'ngx-countdown';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -18,9 +18,14 @@ export class BoardComponent implements OnInit, OnChanges {
   private isBill: Boolean = false;
   private isBillSend: Boolean = false;
   private isFreeSpace: Boolean = false;
+  public configCountDown: any ={};
   constructor(private apiData: ApiDataService) { }
-
+  changeLeftime() { 
+    this.configCountDown = {leftTime: this.configCountDown.leftTime-200};
+    console.log(this.configCountDown); 
+   }
   ngOnInit() {
+    this.configCountDown = { leftTime: 3000 };
     // this.sendLevelMain.emit('Completed');
     // this.sendPlayerMain.emit('Completed');
     console.log('levelInput', this.apiData.getLevel(this.level));

@@ -34,6 +34,7 @@
     "ngx-cookie-service": "^1.0.10",
     "ngx-cookies": "^1.0.5",
     "ngx-countdown": "^3.0.1",
+    "ngx-counter": "^0.3.2",
     "ngx-permissions": "^5.0.0",
     "ngx-restangular": "^3.0.0",
     "rxjs": "^6.3.2",

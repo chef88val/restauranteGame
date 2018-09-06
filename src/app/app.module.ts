@@ -21,7 +21,8 @@ import { ResumComponent } from './components/resum/resum.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RouterOutlet } from '@angular/router';
 import { ApiDataService } from './services/api-data.service';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';// Import the library
+import { CounterModule } from 'ngx-counter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,7 @@ import { AppRoutingModule } from './app-routing.module';
     NgbModule.forRoot(),
     NgxPermissionsModule.forRoot(),
     TranslateModule.forRoot(),
-    CountdownModule
+    CountdownModule, CounterModule.forRoot()
   ],
   providers: [RouterOutlet, ApiDataService], // , AlertsService],
   bootstrap: [AppComponent]

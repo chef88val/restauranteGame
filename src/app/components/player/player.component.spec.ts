@@ -16,6 +16,8 @@ import { Player } from '../../class/player';
 import { not } from '@angular/compiler/src/output/output_ast';
 import { AlertComponent } from '../alert/alert.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CountdownModule } from 'ngx-countdown';
+import { CounterModule } from 'ngx-counter';
 
 describe('PlayerComponent', () => {
   let component: PlayerComponent;
@@ -23,7 +25,7 @@ describe('PlayerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, CookieModule.forRoot(), RouterTestingModule],
+      imports: [FormsModule,  CountdownModule, CounterModule, CookieModule.forRoot(), RouterTestingModule],
       providers: [ApiDataService, CookieService, CookieOptionsProvider],
       declarations: [PlayerComponent,
         BoardComponent,
