@@ -1,11 +1,11 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { AlertsService } from './alerts.service';
-
+import { RouterTestingModule } from '@angular/router/testing';
 describe('AlertsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AlertsService]
+      imports: [RouterTestingModule], providers: [AlertsService]
     });
   });
 

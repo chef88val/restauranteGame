@@ -14,6 +14,9 @@ import { WaiterComponent } from '../components/waiter/waiter.component';
 import { FormsModule } from '@angular/forms';
 import { ApiDataService } from '../services/api-data.service';
 import { CookieService, CookieOptionsProvider, CookieModule } from 'ngx-cookie';
+import { AlertComponent } from '../components/alert/alert.component';
+
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -21,7 +24,7 @@ describe('MainComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule , CookieModule.forRoot()],
+      imports: [ FormsModule , CookieModule.forRoot(), RouterTestingModule],
       providers: [ ApiDataService, CookieService, CookieOptionsProvider],
       declarations: [ MainComponent, GameComponent,
         PlayerComponent,
@@ -32,7 +35,8 @@ describe('MainComponent', () => {
         LevelComponent,
         ResumComponent,
         TableComponent,
-        WaiterComponent ]
+        WaiterComponent,
+        AlertComponent ]
     })
     .compileComponents();
   }));
