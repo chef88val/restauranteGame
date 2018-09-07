@@ -1,5 +1,5 @@
 <div  *ngIf="player.status==null"> <input name="playerName" type="text" placeholder="Name of the player" [(ngModel)]="player.name" />
-<button (click)="savePlayer($event)">Create user</button></div>
+<button [ngClass]="{'disabled': player.name==null}" class="btn btn-primary" (click)="savePlayer($event)">Create user</button></div>
 <div *ngIf="player.status!=null">
   <pre>Player:{{player |json}}</pre>
   <button (click)="removeCookies()">Remove cookies</button>

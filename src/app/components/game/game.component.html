@@ -10,7 +10,6 @@
       <button *ngFor="let lev of levels;let i = index" (click)="loadLevel(lev.lvl)" class="btn btnLevel" style="color:white"
         [ngStyle]="{'background-color': getColor(i)}" [disabled]="levelLoaded || ( lev.lvl>level)" [ngClass]="{'disabled': levelLoaded || (   lev.lvl>level),'active':  lev.lvl===level}">{{lev.lvl}}</button>
     </div>
-    <p>level {{level}} </p>
     <app-board *ngIf="levelLoaded && player.status!=null" [level]="level" (sendLevelMain)="onLevelChange($event)"></app-board>
   </div>
   <div class="col-lg-6">

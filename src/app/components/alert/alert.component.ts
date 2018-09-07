@@ -45,7 +45,7 @@ export class AlertComponent implements OnInit {
           console.log(this.alerts);
         });
     }
-    
+
     removeAlert(alert: Alert) {
         this.alerts = this.alerts.filter(x => x !== alert);
         console.log(this.alerts);

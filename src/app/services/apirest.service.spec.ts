@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ApiRestService } from './ApiRestService';
+import { ApiRestService } from './apiRestService';
 
 describe('ApiRestService', () => {
   beforeEach(() => {

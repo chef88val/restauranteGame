@@ -19,7 +19,7 @@ export class PlayerComponent implements OnInit {
   constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.level = new Level(60, 0, 1, null, null, null, null);
+    this.level = new Level(60, 0, 1, null, null, null, null, null, null, null);
     if (isUndefined(this.player)) {
       this.player = new Player('', 0, false, '');
     }

@@ -7,18 +7,29 @@ import { Injectable } from '@angular/core';
 export class Table {
     public name: String;
     public pax: Number;
-    private waiter: Waiter;
+    private _waiter: Waiter;
     private drinks: Drink[];
     private foods: Food[];
-    private status: String;
+    public status: String;
+    private get waiter(): Waiter {
+        return this._waiter;
+    }
+
+    private set waiter(v: Waiter) {
+        this._waiter = v;
+    }
+
     constructor(_name: String, _pax: Number, _waiter?: Waiter, _drinks?: Drink[], _foods?: Food[], _status?: String) {
         this.name = _name;
         this.pax = _pax;
         this.waiter = _waiter;
         this.drinks = _drinks;
         this.foods = _foods;
-        this.status = 'draft';
+        this.status = 'free';
     }
+
+
+
 
     setItem(type: String, obj: any) {
         if (type === 'drink') {

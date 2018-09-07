@@ -23,8 +23,15 @@ import { AlertComponent } from './components/alert/alert.component';
 import { RouterOutlet } from '@angular/router';
 import { ApiDataService } from './services/api-data.service';
 import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 // Import the library
 import { CounterModule } from 'ngx-counter';
+import { GuestComponent } from './components/guest/guest.component';
+import { ChikenComponent } from './components/chiken/chiken.component';
+import { CookerComponent } from './components/cooker/cooker.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +47,13 @@ import { CounterModule } from 'ngx-counter';
     BoardComponent,
     ColorComponent,
     ResumComponent,
-    AlertComponent
+    AlertComponent,
+    CookerComponent,
+    ChikenComponent,
+    GuestComponent,
+
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     AppRoutingModule,
