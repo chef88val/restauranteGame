@@ -1,3 +1,4 @@
+<app-alert></app-alert>
 <div *ngFor="let level of levelSelected" class=" col-lg-12 jumbotron">
 
   <p>
@@ -6,7 +7,9 @@
     <label>Foods:</label><span>{{level.foods.length}}</span>,
     <label>Drinks:</label><span>{{level.drinks.length}}</span>,
     <label>Tables:</label><span>{{level.tables.length}}</span>,
-    <label>Waiters:</label><span>{{level.waiter.length}}</span>,
+    <label>Waiters:</label><span>{{level.waiters.length}}</span>,
+    <label>Guests:</label><span>{{level.guests.length}}</span>,
+    <label>Cookers:</label><span>{{level.cookers.length}}</span>,
   </p>
   <p>
     <label *ngFor="let waiter of level.waiter">
@@ -14,10 +17,22 @@
     </label>
   </p>
   <p>
-    <label *ngFor="let table of level.tables">
-      <span>{{table.name}}//pax:{{table.pax}}</span>
+    <label *ngFor="let guest of level.guests">
+      <span>{{guest.name}}// status {{guest.status}}</span>
     </label>
   </p>
+  <p>
+      <label *ngFor="let table of level.tables">
+        <span>{{table.name}}// pax {{table.pax}}// status: {{table.status}} </span>
+      </label>
+    </p>
+  <p>
+    <label *ngFor="let cooker of level.cookers">
+      <span>{{cooker.name}}//x:{{cooker.quantItems}}//h:{{cooker.hands}}</span>
+    </label>
+  </p>
+  <pre>Kitchen:{{level.kitchen |json }}</pre>
+  <pre>Tables:{{level.tables |json }}</pre>
 
 
 </div>

@@ -25,7 +25,7 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     this.color = new ColorLevel(this._apiData.getNLevels());
     this.levels = this._apiData.getLevels() || [];
-    this.game = new Game(this.player, new Level(60, 0, 1, null, null, null, null), false);
+    this.game = new Game(this.player, new Level(60, 0, 1, null, null, null, null, null, null, null), false);
     // this.player = new Player('JS', null, null, '');
     if (!this.cookieService.get('player')) {
       this.player = new Player(null, null, null, null);
@@ -65,6 +65,10 @@ export class GameComponent implements OnInit {
       this.level = Number(this.level) + Number(1);
       this.player.currentLvl = this.level;
       this.cookieService.putObject('player', this.player);
+    } else if (evt === 'endGame') {
+      this.levelLoaded = false;
+      this.level = Number(this.level) ;
+      this.player.currentLvl = this.level;
     }
 
   }

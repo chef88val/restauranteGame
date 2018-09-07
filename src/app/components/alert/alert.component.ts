@@ -1,13 +1,27 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Alert, AlertType } from '../../class/alert';
 import { AlertsService } from '../../services/alerts.service';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Observable, Subject } from 'rxjs';
 @Component({
   // moduleId: module.id,
   selector: 'app-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.css']
+  styleUrls: ['./alert.component.css'],
+  animations: [
+    trigger('alertState', [
+      state('inactive', style({
+        backgroundColor: '#eee',
+        transform: 'scale(1)'
+      })),
+      state('active',   style({
+        backgroundColor: '#cfd8dc',
+        transform: 'scale(1.1)'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ])
+  ]
 })
 export class AlertComponent implements OnInit {
   @Input() id: string;
@@ -17,8 +31,9 @@ export class AlertComponent implements OnInit {
   constructor(private alertService: AlertsService) { }
 
   ngOnInit() {
+      console.log('AlertComponent');
       this.alertService.getAlert(this.id).subscribe((alert: Alert) => {
-       
+        console.log('AlertComponent.subscribe');
           if (!alert.message) {
               // clear alerts when an empty alert is received
               this.alerts = [];
@@ -27,11 +42,13 @@ export class AlertComponent implements OnInit {
 
           // add alert to array
           this.alerts.push(alert);
-      });
-  }
+          console.log(this.alerts);
+        });
+    }
 
-  removeAlert(alert: Alert) {
-      this.alerts = this.alerts.filter(x => x !== alert);
+    removeAlert(alert: Alert) {
+        this.alerts = this.alerts.filter(x => x !== alert);
+        console.log(this.alerts);
   }
 
   cssClass(alert: Alert) {

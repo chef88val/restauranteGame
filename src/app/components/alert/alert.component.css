@@ -1,0 +1,32 @@
+.notifications {
+    left: 0px;
+    top: 0px;
+    width: 400px;
+    height: 300px;
+    position: relative;
+    border: solid 1px green;
+    padding-top: 40px;
+    
+}
+
+.notifications:empty {
+    padding-top: 0px;
+}
+
+.notification {
+    height: 40px;
+    background: lightblue;
+    margin: 2px;
+    
+}
+.animate
+{
+   
+    height: 0px;
+    transition: height 1s;
+}
+.notification:first-child {
+    margin-top: -38px;
+}
+
+

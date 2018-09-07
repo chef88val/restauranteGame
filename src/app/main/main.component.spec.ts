@@ -19,6 +19,9 @@ import { AlertComponent } from '../components/alert/alert.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CountdownModule } from 'ngx-countdown';
 import { CounterModule } from 'ngx-counter';
+import { FooterComponent } from '../components/footer/footer.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
+import { LoginComponent } from '../components/login/login.component';
 describe('MainComponent', () => {
   let component: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
@@ -37,7 +40,8 @@ describe('MainComponent', () => {
         ResumComponent,
         TableComponent,
         WaiterComponent,
-        AlertComponent ]
+        AlertComponent,
+      FooterComponent, NavbarComponent, LoginComponent ]
     })
     .compileComponents();
   }));
