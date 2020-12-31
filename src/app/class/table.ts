@@ -11,6 +11,7 @@ export class Table {
     private drinks: Drink[];
     private foods: Food[];
     public status: String;
+    private _tag: String;
     private get waiter(): Waiter {
         return this._waiter;
     }
@@ -18,8 +19,17 @@ export class Table {
     private set waiter(v: Waiter) {
         this._waiter = v;
     }
+    public set tag(v: String) {
+        this._tag = v;
+    }
 
-    constructor(_name: String, _pax: Number, _waiter?: Waiter, _drinks?: Drink[], _foods?: Food[], _status?: String) {
+    public get tag(): String {
+        return this._tag;
+    }
+
+    constructor(_name: String, _pax: Number, _waiter?: Waiter,
+         _drinks?: Drink[], _foods?: Food[], _status?: String) {
+            this.tag = 'Table';
         this.name = _name;
         this.pax = _pax;
         this.waiter = _waiter;

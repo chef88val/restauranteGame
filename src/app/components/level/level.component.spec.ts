@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LevelComponent } from './level.component';
+import { LevelComponent } from 'src/app/components/level/level.component';
 
 describe('LevelComponent', () => {
   let component: LevelComponent;

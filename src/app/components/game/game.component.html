@@ -1,18 +1,43 @@
-<!--<input name="playerName" type="text" placeholder="Name of the player" [(ngModel)]="player.name" />-->
+<!--<input name="playerName" type="text" placeholder="Name of the currentPlayer" [(ngModel)]="currentPlayer.name" />-->
 <!--lev.lvl<level ||-->
+<!-- <button [routerlink]="[/home]">Home</button> -->
+<div class="row col-lg-12">
+  <app-board *ngIf="levelLoaded && currentPlayer.status!=null" [lvl]="currentLevel"[level]="currentLevel"
+    (sendLevelMain)="onLevelChange($event)"></app-board>
+</div>
 <div class="row col-lg-12">
   <div class="col-lg-6">
-    <app-player [player]="player" (sendPlayerMain)="onPlayerChange($event)"></app-player>
+    <app-player [player]="currentPlayer" (sendPlayerMain)="onPlayerChange($event)"></app-player>
     <!--<pre>p:{{color | json}}</pre>-->
-    <!--<span>{{ levelLoaded && player.status!=null}} </span>-->
-    <button *ngIf="player.status!=null && !gameStatus" type="button" (click)="newGame()"> New Game</button>
-    <div *ngIf="player.status!=null && gameStatus && levels.length>0">
-      <button *ngFor="let lev of levels;let i = index" (click)="loadLevel(lev.lvl)" class="btn btnLevel" style="color:white"
-        [ngStyle]="{'background-color': getColor(i)}" [disabled]="levelLoaded || ( lev.lvl>level)" [ngClass]="{'disabled': levelLoaded || (   lev.lvl>level),'active':  lev.lvl===level}">{{lev.lvl}}</button>
+    <!--<span>{{ levelLoaded && currentPlayer.status!=null}} </span>-->
+    <button *ngIf="currentPlayer!=null && !gameStatus" type="button" class="btn btn-primary" (click)="newGame()">
+      New Game</button>
+    <div class="row col-lg-12" *ngIf="levelLoaded && gameStatus && restaurantLoaded">
+      {{currentPlayer.name}} >> {{currentGame.currentRestaurant | json }} >> {{level}}
     </div>
-    <app-board *ngIf="levelLoaded && player.status!=null" [level]="level" (sendLevelMain)="onLevelChange($event)"></app-board>
+    <p>levelLoaded{{levelLoaded}}</p>
+    <p>currentPlayer{{currentPlayer|json}}</p>
+    <p>gameStatus{{gameStatus}}</p>
+    <p>restaurants{{restaurants |json}}</p>
+    <div *ngIf="currentPlayer!=null && gameStatus && restaurants.length>0">
+      <button *ngFor="let rest of restaurants;let i = index" type="button" class="btn btn-primary btnRestaurant"
+        (click)="loadRestaurant(index)" [disabled]="restaurantLoaded"
+        [ngClass]="{'disabled': restaurantLoaded ,'active':  rest.name===currentGame.currentRestaurant._name}">
+        {{rest.name}} </button>
+      <div *ngIf=" restaurantLoaded  && levels.length>0">
+        <button *ngFor="let lev of levels;let i = index" (click)="loadLevel(lev.lvl)" class="btn btnLevel"
+          style="color:white" [ngStyle]="{'background-color': getColor(i)}" [disabled]="levelLoaded || ( lev.lvl>level)"
+          [ngClass]="{'disabled': levelLoaded || (   lev.lvl>level),'active':  lev.lvl===level}">{{lev.lvl}}</button>
+      </div>
+
+    </div>
   </div>
   <div class="col-lg-6">
-    <app-resum [level]="level" [player]="player"></app-resum>
+    <pre>Level: {{currentLevel}}</pre>
+    <pre>Level: {{levels}}</pre>
+    <span *ngFor="let levl of levels; let i= index">
+      <pre>{{levl |json}}</pre>
+    </span>
+    <!-- <app-resum [level]="currentPlayer.currentLvl" [player]="currentPlayer"></app-resum> -->
   </div>
 </div>

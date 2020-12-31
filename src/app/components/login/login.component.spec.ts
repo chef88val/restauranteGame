@@ -1,26 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CountdownModule } from 'ngx-countdown';
 import { CounterModule } from 'ngx-counter';
 import { CookieModule, CookieService, CookieOptionsProvider } from 'ngx-cookie';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ApiDataService } from '../../services/api-data.service';
-import { MainComponent } from '../../main/main.component';
-import { GameComponent } from '../game/game.component';
-import { PlayerComponent } from '../player/player.component';
-import { BoardComponent } from '../board/board.component';
-import { DrinkComponent } from '../drink/drink.component';
-import { FoodComponent } from '../food/food.component';
-import { ColorComponent } from '../color/color.component';
-import { LevelComponent } from '../level/level.component';
-import { ResumComponent } from '../resum/resum.component';
-import { TableComponent } from '../table/table.component';
-import { WaiterComponent } from '../waiter/waiter.component';
-import { AlertComponent } from '../alert/alert.component';
-import { FooterComponent } from '../footer/footer.component';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { ApiDataService } from 'src/app/services/api-data.service';
+import { MainComponent } from 'src/app/main/main.component';
+import { GameComponent } from 'src/app/components/game/game.component';
+import { PlayerComponent } from 'src/app/components/player/player.component';
+import { BoardComponent } from 'src/app/components/board/board.component';
+import { DrinkComponent } from 'src/app/components/drink/drink.component';
+import { FoodComponent } from 'src/app/components/food/food.component';
+import { ColorComponent } from 'src/app/components/color/color.component';
+import { LevelComponent } from 'src/app/components/level/level.component';
+import { ResumComponent } from 'src/app/components/resum/resum.component';
+import { TableComponent } from 'src/app/components/table/table.component';
+import { WaiterComponent } from 'src/app/components/waiter/waiter.component';
+import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;

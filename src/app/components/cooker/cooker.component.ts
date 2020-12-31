@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Worker } from 'src/app/class';
 
 @Component({
   selector: 'app-cooker',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CookerComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
   }

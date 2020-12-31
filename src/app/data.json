@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Waiter1",
+    "loadFoodItems": [],
+    "loadDrinkItems": [],
+    "auxData": {
+      "travels": 0,
+      "nFoods": 0,
+      "total": 0,
+      "nDrinks": 0,
+      "bills": 0,
+      "nTables": 0
+    },
+    "tips": 0
+  }
+],
+[
+  {
+    "name": "Cooker1",
+    "loadFoodItems": [],
+    "loadDrinkItems": [],
+    "auxData": {
+      "travels": 0,
+      "nFoods": 0,
+      "total": 0,
+      "nDrinks": 0,
+      "bills": 0,
+      "nTables": 0
+    }
+  }
+]
+[
+  {
+    "name": "F1",
+    "price": 1,
+    "quant": 1
+  }
+]
+[
+  {
+    "name": "D1",
+    "price": 1,
+    "quant": 1
+  }
+]
+[
+  {
+    "name": "T1",
+    "pax": 1,
+    "status": "free"
+  }
+]
+[
+  {
+    "cookers": [],
+    "name": "Kitchen1",
+    "nCookers": 1
+  }
+]
+[
+  {
+    "name": "Guest1",
+    "currentLvl": 0,
+    "banned": false,
+    "status": "free"
+  }
+]

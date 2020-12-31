@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Alert, AlertType } from '../../class/alert';
-import { AlertsService } from '../../services/alerts.service';
+import { Alert, AlertType } from 'src/app/class/alert';
+import { AlertsService } from 'src/app/services/alerts.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Observable, Subject } from 'rxjs';
 @Component({

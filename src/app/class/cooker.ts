@@ -1,9 +1,10 @@
 import { Drink } from './drink';
 import { Food } from './food';
 import { Injectable } from '@angular/core';
+import { Worker } from './worker';
 @Injectable()
 
-export class LoadItemCooker {
+/*export class LoadItemCooker {
     private table: String;
     private item: any;
     constructor(_table: String, _item: any) {
@@ -26,32 +27,36 @@ export class CookerAux {
         this.bills = 0;
         this.nTables = 0;
     }
-}
-export class Cooker {
-    public name: String;
-    private hands: Number;
-    private quantItems: Number;
+}*/
+export class Cooker extends Worker {
+    //public name: String;
+    //private hands: Number;
+    //private quantItems: Number;
     public loadFoodItems: Food[];
     public loadDrinkItems: Drink[];
-    public auxData: CookerAux;
+    //public auxData: CookerAux;
 
     constructor(_name: String, _hands: Number, _quantItems: Number,
-        _loadFoodItems?: Food[], _loadDrinkItems?: Drink[], auxData?: CookerAux) {
-        this.name = _name;
-        this.hands = _hands;
-        this.quantItems = _quantItems;
+        _loadFoodItems?: Food[], _loadDrinkItems?: Drink[]) {
+        let dat = []
+        dat.push(_loadDrinkItems);
+        dat.push(_loadFoodItems);
+        super('Cooker', _name, _hands, _quantItems, dat);
+        //this.name = _name;
+        //this.hands = _hands;
+        //this.quantItems = _quantItems;
         this.loadFoodItems = _loadFoodItems || [];
         this.loadDrinkItems = _loadDrinkItems || [];
-        this.auxData = new CookerAux();
+        //this.auxData = new CookerAux();
     }
-
+/*
     howManyItems(type: any): Number {
         return type.length; // return this.loadItems.length;
     }
-    isFreeSpace(waiter: Cooker): Boolean {
+    isFreeSpace(): Boolean {
         let res: Boolean = false;
         if (Number(this.howManyItems(this.loadDrinkItems))
-          + Number(this.howManyItems(this.loadFoodItems)) < Number(this.quantItems) * Number(this.hands)) {
+            + Number(this.howManyItems(this.loadFoodItems)) < Number(this.quantItems) * Number(this.hands)) {
             res = true;
         }
         return res;
@@ -77,5 +82,5 @@ export class Cooker {
     }
     setDataAux(prop: String) {
         this.auxData[prop.valueOf()] += Number(1);
-    }
+    }*/
 }

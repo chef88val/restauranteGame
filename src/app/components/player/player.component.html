@@ -2,8 +2,8 @@
 <button [ngClass]="{'disabled': player.name==null}" class="btn btn-primary" (click)="savePlayer($event)">Create user</button></div>
 <div *ngIf="player.status!=null">
   <pre>Player:{{player |json}}</pre>
-  <button (click)="removeCookies()">Remove cookies</button>
-  <button (click)="resetLevel()">Reset level</button>
+  <button class="btn btn-danger" (click)="removeCookies()">Remove cookies</button>
+  <button class="btn btn-danger" (click)="resetLevel()">Reset level</button>
 </div>
 <!--<div id="main" style="border: 1px solid black">
   Player:

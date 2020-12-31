@@ -1,5 +1,12 @@
+<!-- <pre>{{levelSelected|json}}</pre> -->
+<ngb-tabset>
+  <ngb-tab *ngFor="let it of levelSelected.data; let i = index">
+    <ng-template ngbTabTitle>{{it[0]._tag}}</ng-template>
+    <ng-template ngbTabContent>{{it[0]| json}} </ng-template>
+  </ngb-tab>
+</ngb-tabset>
 <countdown [config]="configCountDown" (start)="onStart()" (finished)="onFinished()" (notify)="onNotify($event)">$!m!:$!s!</countdown>
-<!--#cd1<button (click)="cd1.pause()" class="btn btn-link btn-sm">pause</button>
+<!-- #cd1<button (click)="cd1.pause()" class="btn btn-link btn-sm">pause</button>
 <button (click)="cd1.resume()" class="btn btn-link btn-sm">resume</button>
 <button (click)="cd1.stop()" class="btn btn-link btn-sm">stop</button>
 <button (click)="cd1.restart()" class="btn btn-link btn-sm">restart</button>
@@ -9,35 +16,73 @@
 <ngx-counter [countValue]=0 [speed]=1000 size="big" (change)="counterChanged($event)"></ngx-counter>
 <ngx-counter [countValue]=-1 [limit]=counterFinish size="large" font="Arial" theme="gray"></ngx-counter>
 <ngx-counter countValue=-2 limit=10 size="xl" color="gold" bgcolor="#F5F5DC"></ngx-counter>-->
-<button class="btn btn-warning" *ngFor="let waiter of levelSelected.waiters; let i=index" type="button" [disabled]="levelSelected.waiters.length>0"
+<!-- <pre>{{waiterSelected.isFreeSpace()}}</pre> -->
+<button class="btn btn-warning" *ngFor="let waiter of currentLevel.waiters; let i=index" type="button" [disabled]="currentLevel.waiters.length>0"
   (click)="selectWaiter(i)">{{waiter.name}}</button>
-<button class="btn btn-warning" *ngFor="let cooker of levelSelected.cookers; let i=index" type="button" [disabled]="levelSelected.cookers.length>0"
+<button class="btn btn-warning" *ngFor="let cooker of currentLevel.cookers; let i=index" type="button" [disabled]="currentLevel.cookers.length>0"
   (click)="selectCooker(i)">{{cooker.name}}</button>
 
-<button class="btn btn-primary" *ngIf="checkIsFreeTable()" type="button" (click)="loadTable()">loadTable</button>
-<ng-container *ngIf="checkIsFreeTable(); then tables_free; else tables_not_free"></ng-container>
+<button class="btn btn-primary" *ngIf="currentLevel.checkIsFreeTable()" type="button" (click)="loadTable()">loadTable</button>
+<ng-container *ngIf="currentLevel.checkIsFreeTable(); then tables_free; else tables_not_free"></ng-container>
 <ng-template #tables_free>
-  tables_free
+  Hay {{currentLevel.checkIsFreeTableLength()}} free
 </ng-template>
 <ng-template #tables_not_free>
-  tables_not_free
+  No hay mesa libre
 </ng-template>
 
-<button class="btn btn-primary" *ngIf="!checkIsFreeTable() && checkIsFreeGuest()" [disabled]="checkIsLoadGuest()" type="button" (click)="loadGuest()">loadGuest</button>
-<ng-container *ngIf="checkIsFreeGuest(); then guests_free; else guests_not_free"></ng-container>
+<button class="btn btn-primary" *ngIf="!currentLevel.checkIsFreeTable() && currentLevel.checkIsFreeGuest()" [disabled]="currentLevel.checkIsLoadGuest()" type="button" (click)="loadGuest()">loadGuest</button>
+<ng-container *ngIf="currentLevel.checkIsFreeGuest(); then guests_free; else guests_not_free"></ng-container>
 <ng-template #guests_free>
-  guests_free
+  Queda por atender {{currentLevel.checkIsFreeGuestLength()}}
 </ng-template>
 <ng-template #guests_not_free>
-  guests_not_free
+  No queda por atender a nadie
 </ng-template>
 
-
-<!--<div *ngFor="let level of levelSelected">-->
 <table class="table table-responsive table-striped">
+    <thead>
+      <tr>
+        <th>Table{{currentLevel.checkIsLoadTable() }}-{{ currentLevel.checkIsLoadGuest()}}</th>
+        <th>Drinks Left</th>
+        <th>Food Left</th>
+        <th>Drinks Served</th>
+        <th>Food Served</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="currentLevel.checkIsLoadTable() && currentLevel.checkIsLoadGuest()">
+      <tr *ngFor="let table of currentLevel.tables" >
+        <td>{{table.name}} </td>
+         <td>{{ levelSelected | json}}</td>
+        <td>{{currentLevel.drinks.length}}</td>
+        <td>{{currentLevel.foods.length}}</td>
+        <td>{{waiterSelected.loadDrinkItems.length }}</td>
+        <td>{{waiterSelected.loadFoodItems.length}}</td>
+        <td *ngIf="table.status!=='closed'">
+          <button *ngIf="waiterSelected.loadDrinkItems.length==0 && currentLevel.drinks.length>0 && !isBill  " type="button"
+            (click)="loadItem(1,'drink', table.name)" [ngClass]="{'disabled': isFreeSpace}" class="btn btn-2x btn-primary">Load
+            drink</button>
+          <button *ngIf="waiterSelected.loadFoodItems.length==0 && currentLevel.foods.length>0 && !isBill" type="button"
+            (click)="loadItem(1,'food', table.name)" class="btn btn-2x btn-success" [ngClass]="{'disabled': isFreeSpace}">Load
+            food</button>
+          <button *ngIf="waiterSelected.loadDrinkItems.length>0 && !isBill" type="button" (click)="serveItem(1,'drink', table.name)"
+            class="btn btn-2x btn-primary">Serve
+            drink</button>
+          <button *ngIf="waiterSelected.loadFoodItems.length>0 && !isBill" type="button" (click)="serveItem(1,'food', table.name)"
+            class="btn btn-2x btn-success">Serve
+            food</button>
+          <button *ngIf=" table.status ==='served'" type="button" (click)="sendBill(table.name)" class="btn btn-2x btn-warning">Bill</button>
+          <button *ngIf=" table.status ==='billSended'" type="button" (click)="closeTable(table.name)" class="btn btn-2x btn-danger">Close</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<!--<div *ngFor="let level of levelSelected">-->
+<!--<table class="table table-responsive table-striped">
   <thead>
     <tr>
-      <th>Table{{checkIsLoadTable() }}-{{ checkIsLoadGuest()}}</th>
+      <th>Table{{currentLevel.checkIsLoadTable() }}-{{ currentLevel.checkIsLoadGuest()}}</th>
       <th>Drinks Left</th>
       <th>Food Left</th>
       <th>Drinks Served</th>
@@ -45,19 +90,19 @@
       <th>Actions</th>
     </tr>
   </thead>
-  <tbody *ngIf="checkIsLoadTable() && checkIsLoadGuest()">
-    <tr *ngFor="let table of levelSelected.tables" >
+  <tbody *ngIf="currentLevel.checkIsLoadTable() && currentLevel.checkIsLoadGuest()">
+    <tr *ngFor="let table of currentLevel.tables" >
       <td>{{table.name}} </td>
-      <!--<td>{{ levelSelected | json}}</td>-->
-      <td>{{levelSelected.drinks.length}}</td>
-      <td>{{levelSelected.foods.length}}</td>
+       <td>{{ levelSelected | json}}</td>
+      <td>{{currentLevel.drinks.length}}</td>
+      <td>{{currentLevel.foods.length}}</td>
       <td>{{waiterSelected.loadDrinkItems.length }}</td>
       <td>{{waiterSelected.loadFoodItems.length}}</td>
       <td *ngIf="table.status!=='closed'">
-        <button *ngIf="waiterSelected.loadDrinkItems.length==0 && levelSelected.drinks.length>0 && !isBill  " type="button"
+        <button *ngIf="waiterSelected.loadDrinkItems.length==0 && currentLevel.drinks.length>0 && !isBill  " type="button"
           (click)="loadItem(1,'drink', table.name)" [ngClass]="{'disabled': isFreeSpace}" class="btn btn-2x btn-primary">Load
           drink</button>
-        <button *ngIf="waiterSelected.loadFoodItems.length==0 && levelSelected.foods.length>0 && !isBill" type="button"
+        <button *ngIf="waiterSelected.loadFoodItems.length==0 && currentLevel.foods.length>0 && !isBill" type="button"
           (click)="loadItem(1,'food', table.name)" class="btn btn-2x btn-success" [ngClass]="{'disabled': isFreeSpace}">Load
           food</button>
         <button *ngIf="waiterSelected.loadDrinkItems.length>0 && !isBill" type="button" (click)="serveItem(1,'drink', table.name)"
@@ -71,7 +116,6 @@
       </td>
     </tr>
   </tbody>
-</table>
-
-<pre>{{levelSelected | json}}</pre>
+</table>-->
+ 
 <!--</div>-->

@@ -1,5 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<h1>{{title}}</h1>
+<div *ngIf="!isplayer"><h1>{{title}}</h1>
+<h3>{{gameList.length}}</h3>
+<h3>{{gameList[0]| json}}</h3>
 
+<p>My name is {{name}}</p>
+<button (click)="createPlayer()">Create Player</button>
+
+<div *ngFor="let game of gameList; let i = index">
+<!--     <button (click)="updateGame(i,'charge')">Charge Game</button>
+    <button (click)="updateGame(i,'load')">Load Game</button>
+ -->    <button (click)="updateGame(i,'start')">Start Game</button>
+</div>
+<pre>{{player | json}}</pre>
+<pre>{{game | json}}</pre></div>
 <router-outlet></router-outlet>
 <!--<app-main></app-main>-->

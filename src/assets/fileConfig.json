@@ -1,0 +1,9 @@
+{
+    "data": [
+        {
+            "name": "SushiGame",
+            "url":"",
+            "fileConfig": "../assets/sushiGame.fileConfig.json"
+        }
+    ]
+}

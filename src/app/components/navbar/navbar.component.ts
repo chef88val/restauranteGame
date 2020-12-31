@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ApiRestService } from '../../services/apiRestService';
+import { ApiRestService } from 'src/app/services/apiRestService';
 import { CookieService } from 'ngx-cookie';
-import { AlertsService } from '../../services/alerts.service';
-import { Player } from '../../class/player';
+import { AlertsService } from 'src/app/services/alerts.service';
+import { Player } from 'src/app/class/player';
 
 @Component({
   selector: 'app-navbar',

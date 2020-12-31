@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResumComponent } from './resum.component';
-import { Player } from '../../class/player';
-import { ApiDataService } from '../../services/api-data.service';
+import { ResumComponent } from 'src/app/components/resum/resum.component';
+import { Player } from 'src/app/class/player';
+import { ApiDataService } from 'src/app/services/api-data.service';
 
 describe('ResumComponent', () => {
   let component: ResumComponent;

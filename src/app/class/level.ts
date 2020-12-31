@@ -5,8 +5,7 @@ import { Table } from './table';
 import { Injectable } from '@angular/core';
 import { Guest } from './guest';
 import { Cooker } from './cooker';
-import { Kitchen } from './kitchen';
-@Injectable()
+import { Kitchen } from 'src/app/class/kitchen';
 
 export class Level {
 
@@ -18,10 +17,11 @@ export class Level {
     public waiters: Waiter[];
     public tables: Table[];
     public guests: Guest[];
-    public kitchen: Kitchen;
+    public kitchen: Kitchen[];
     public cookers: Cooker[];
     constructor(_time: Number, _lvl: Number, _speed: Number,
-        _foods: Food[], _drinks: Drink[], _waiters: Waiter[], _tables: Table[], _kitchen: Kitchen, _guests: Guest[], _cookers: Cooker[]
+        _foods: Food[], _drinks: Drink[], _waiters: Waiter[], _tables: Table[], 
+        _kitchen: Kitchen[], _guests: Guest[], _cookers: Cooker[]
     ) {
         this.time = _time;
         this.lvl = _lvl;
@@ -38,5 +38,24 @@ export class Level {
     getWaiter(i: any): Waiter {
         console.log(this.waiters);
         return this.waiters[i];
-      }
+    }
+    checkIsFreeGuestLength(): Number {
+        return this.guests.filter(t => t.status === 'free').length;
+    }
+    checkIsLoadGuest(): Boolean {
+        return this.guests.filter(g => g.status === 'full').length > 0;
+    }
+
+    checkIsFreeGuest(): Boolean {
+        return this.guests.filter(t => t.status === 'free').length > 0;
+    }
+    checkIsFreeTable(): Boolean {
+        return this.tables.filter(t => t.status === 'free').length > 0;
+    }
+    checkIsFreeTableLength(): Number {
+        return this.tables.filter(t => t.status === 'free').length;
+    }
+    checkIsLoadTable(): Boolean {
+        return this.tables.filter(t => t.status !== 'free').length > 0;
+    }
 }

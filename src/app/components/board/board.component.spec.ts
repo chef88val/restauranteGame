@@ -1,18 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoardComponent } from './board.component';
-import { PlayerComponent } from '../player/player.component';
-import { DrinkComponent } from '../drink/drink.component';
-import { FoodComponent } from '../food/food.component';
-import { ColorComponent } from '../color/color.component';
-import { LevelComponent } from '../level/level.component';
-import { ResumComponent } from '../resum/resum.component';
-import { TableComponent } from '../table/table.component';
-import { WaiterComponent } from '../waiter/waiter.component';
+import { BoardComponent } from 'src/app/components/board/board.component';
+import { PlayerComponent } from 'src/app/components/player/player.component';
+import { DrinkComponent } from 'src/app/components/drink/drink.component';
+import { FoodComponent } from 'src/app/components/food/food.component';
+import { ColorComponent } from 'src/app/components/color/color.component';
+import { LevelComponent } from 'src/app/components/level/level.component';
+import { ResumComponent } from 'src/app/components/resum/resum.component';
+import { TableComponent } from 'src/app/components/table/table.component';
+import { WaiterComponent } from 'src/app/components/waiter/waiter.component';
 import { FormsModule } from '@angular/forms';
-import { ApiDataService } from '../../services/api-data.service';
+import { ApiDataService } from 'src/app/services/api-data.service';
 import { CookieService, CookieOptionsProvider, CookieModule } from 'ngx-cookie';
-import { AlertComponent } from '../alert/alert.component';
+import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CountdownModule } from 'ngx-countdown';
 import { CounterModule } from 'ngx-counter';
@@ -23,9 +23,9 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ,  CountdownModule, CounterModule,CookieModule.forRoot(), RouterTestingModule],
-      providers: [ ApiDataService, CookieService, CookieOptionsProvider],
-      declarations: [ PlayerComponent,
+      imports: [FormsModule, CountdownModule, CounterModule, CookieModule.forRoot(), RouterTestingModule],
+      providers: [ApiDataService, CookieService, CookieOptionsProvider],
+      declarations: [PlayerComponent,
         BoardComponent,
         DrinkComponent,
         FoodComponent,
@@ -34,9 +34,9 @@ describe('BoardComponent', () => {
         ResumComponent,
         TableComponent,
         WaiterComponent,
-        AlertComponent ]
+        AlertComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

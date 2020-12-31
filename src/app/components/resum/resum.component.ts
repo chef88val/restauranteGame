@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Level } from '../../class/level';
-import { Player } from '../../class/player';
-import { ApiDataService } from '../../services/api-data.service';
+import { Level } from 'src/app/class/level';
+import { Player } from 'src/app/class/player';
+import { ApiDataService } from 'src/app/services/api-data.service';
 
 @Component({
   selector: 'app-resum',

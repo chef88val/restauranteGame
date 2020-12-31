@@ -1,17 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Player } from '../../class/player';
-import { ApiRestService } from '../../services/apiRestService';
-// import { AppComponent } from '../../../app.component';
+import { Player } from 'src/app/class/player';
+import { ApiRestService } from 'src/app/services/apiRestService';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MainComponent } from '../../main/main.component';
+import { MainComponent } from 'src/app/main/main.component';
 import { CookieService } from 'ngx-cookie';
-// import { Alert, AlertType } from '../../../alert';
-import { AlertsService } from '../../services/alerts.service';
+import { AlertsService } from 'src/app/services/alerts.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login/login.component.html',
+  styleUrls: ['./login/login.component.css']
 })
 export class LoginComponent implements OnInit {
   @Input() player: Player;

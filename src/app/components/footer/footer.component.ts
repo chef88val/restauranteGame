@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Player } from '../../class/player.spec';
+import { Player } from 'src/app/class/player.spec';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',

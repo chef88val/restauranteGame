@@ -29,8 +29,14 @@ import { FooterComponent } from './components/footer/footer.component';
 // Import the library
 import { CounterModule } from 'ngx-counter';
 import { GuestComponent } from './components/guest/guest.component';
-import { ChikenComponent } from './components/chiken/chiken.component';
+import { KitchenComponent } from './components/kitchen/kitchen.component';
 import { CookerComponent } from './components/cooker/cooker.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { DeviceComponent } from './components/device/device.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { HttpClientModule } from '@angular/common/http';
+import { JsonPipe } from './json.pipe';
+import { ValueArrayPipe } from './value-array.pipe';
 
 @NgModule({
   declarations: [
@@ -49,13 +55,18 @@ import { CookerComponent } from './components/cooker/cooker.component';
     ResumComponent,
     AlertComponent,
     CookerComponent,
-    ChikenComponent,
+    KitchenComponent,
     GuestComponent,
 
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    MenuComponent,
+    DeviceComponent,
+    RestaurantComponent,
+    ValueArrayPipe
   ],
   imports: [
+    HttpClientModule,
     AppRoutingModule,
     BrowserModule, BrowserAnimationsModule,
     CookieModule.forRoot(),
@@ -65,7 +76,7 @@ import { CookerComponent } from './components/cooker/cooker.component';
     TranslateModule.forRoot(),
     CountdownModule, CounterModule.forRoot()
   ],
-  providers: [RouterOutlet, ApiDataService], // , AlertsService],
+  providers: [ApiDataService], // , AlertsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

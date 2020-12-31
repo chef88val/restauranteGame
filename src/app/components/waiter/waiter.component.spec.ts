@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WaiterComponent } from './waiter.component';
+import { WaiterComponent } from 'src/app/components/waiter/waiter.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('WaiterComponent', () => {

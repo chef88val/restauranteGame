@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Player } from '../../class/player';
-import { Level } from '../../class/level';
+import { Player } from 'src/app/class/player';
+import { Level } from 'src/app/class/level';
 import { CookieService } from 'ngx-cookie';
 import { isUndefined } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-player',
@@ -16,7 +17,7 @@ export class PlayerComponent implements OnInit {
   // private player: Player;
   private level: Level;
   private player2: String;
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService, private router: Router) { }
 
   ngOnInit() {
     this.level = new Level(60, 0, 1, null, null, null, null, null, null, null);
@@ -36,6 +37,9 @@ export class PlayerComponent implements OnInit {
   removeCookies() {
     this.cookieService.remove('player');
     this.sendPlayerMain.emit('removeCookies');
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
 
   }
   resetLevel() {

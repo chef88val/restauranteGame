@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CookerComponent } from './cooker.component';
+import { CookerComponent } from 'src/app/components/cooker/cooker.component';
 
 describe('CookerComponent', () => {
   let component: CookerComponent;
